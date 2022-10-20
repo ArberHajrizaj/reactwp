@@ -1,0 +1,26 @@
+.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+            line-clamp: 5; 
+    -webkit-box-orient: vertical;
+ }
+ h2{
+    font-size:20px;
+ }
+ h3{
+    font-size:18px;
+ }
+ h4{
+    font-size:17px;
+ }
+ h5{
+    font-size:16px;
+ }
+ h6{
+    font-size:15px;
+ } 
+ .card {
+    min-height: 200px;
+}

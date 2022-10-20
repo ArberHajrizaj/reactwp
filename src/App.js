@@ -1,13 +1,10 @@
+import React from "react";
+import Router from "./router/Router";
 
-import './App.css';
-import Post from './components/Post';
-
-function App() {
-  return (
-    <div className="App">
-     <Post/>
-    </div>
-  );
-}
+const App = () => (
+  <>
+  <Router />
+  </>
+);
 
 export default App;

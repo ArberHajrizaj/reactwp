@@ -1,0 +1,31 @@
+html,
+body {
+  /* overflow: hidden; */
+  height: 100% !important;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  background: grey;
+}
+
+div#root,
+body {
+  text-align: center !important;
+}
+
+h2,
+p {
+  text-align: left;
+}

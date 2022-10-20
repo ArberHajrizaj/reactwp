@@ -1,0 +1,132 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  img {
+    height: 400px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 46px;
+  }
+  p,
+  h1,
+  h2 {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #3f2405;
+    text-align: left;
+  }
+  .post-title {
+    font-weight: bold;
+    color: black;
+  }
+  .single-image {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+  }
+  #slider2 {
+    position: relative;
+    -webkit-appearance: none;
+    width: calc(100% - 1px);
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    height: 400px !important;
+  }
+  
+  #slider2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 40px;
+    background: url("http://extensiondemaison.fr/uploads/2021/12/left-and-right-arrows.png"),
+      rgba(255, 255, 255, 0.3);
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    background-size: contain;
+    cursor: pointer;
+  }
+  img {
+    object-fit: contain;
+    /* position: absolute; */
+  }
+  #slider2 {
+    position: relative;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    margin-left:0;
+    background-color: transparent;
+    outline: none;
+  }
+  input.slide2 {
+    position: relative;
+    -webkit-appearance: none;
+    width: calc(100% - 1px);
+    height: 100%;
+    margin-left: 3.3%;
+    background-color: transparent;
+    outline: none;
+  }
+  .avant-section {
+  
+    width: 100%;
+    height: auto !important;
+    position: relative;
+    display: inline-block !important;
+    /* display: none !important; */
+  }
+  #clockIcon {
+    margin-right: 0.5vh;
+  }
+  
+  .comparingImages {
+    object-fit: contain;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .single-post.container {
+    margin-top: 2.2vh;
+  }
+  a{
+    font-family:"Source Sans Pro", sans-serif !important;
+    font-weight: 600 !important;
+    color:black !important;
+    font-size:20px !important;
+  }
+  .breadcrumb-item+.breadcrumb-item::before{
+    color:#e46c0a !important;
+    font-weight: 800 !important;
+  }
+  .breadcrumb-item.active,li.breadcrumb-item {
+  
+    line-height: 2em;
+  }
+  .breadcrumb-item.active{
+    color:#e46c0a !important;
+    font-weight: 600 !important;;
+    font-size:20px !important;
+    line-height: 1.6em !important;
+  }
+  a:hover{
+    color:#e46c0a !important;
+  }
+  
+  @media screen and (max-width: 768px) {
+  
+  nav ol li a,li.breadcrumb-item.active{
+    font-size:14px !important;
+  }
+  li.breadcrumb-item.active{
+    margin-top:1.8% !important;
+  }
+  #slider2,img{
+    height: 233px !important;
+    object-fit: contain !important;
+  }
+    
+    }
+  
+  

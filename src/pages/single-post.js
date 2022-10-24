@@ -22,9 +22,9 @@ const SinglePost = () => {
 
   return (
     <div className="single-post container">
-      {data && (
+      {blog && (
         <div className="single-post container">
-          <h1 className="post-title">{data.title}</h1>
+          <h1 className="post-title">{blog.title}</h1>
           <div className="avant-section">
             <img
               className="comparingImages"
@@ -32,13 +32,13 @@ const SinglePost = () => {
                 width: "100%",
                 objectFit: "cover",
               }}
-              src={data.featured_image}
+              src={blog.featured_image}
             />
           </div>
           <div
             className="content"
             dangerouslySetInnerHTML={{
-              __html: data.excerpt,
+              __html: blog.excerpt,
             }}
           />
         </div>

@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import {fetchBlogs} from '../api/blog';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/blog.css";
+import "../styles/blog.css";
 
 const Homepage = () => {
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(0);
   const [paginationPages, setPaginationPages] = useState(0);
 
-  const [searchParam] = useSearchParams();
-
-  const getQueryParam = (key) => searchParam.get(key);
 
   const getPageNumber = () => Math.ceil(blogs.length / 4);
 
   useEffect(() => {
     const fetchData = async () => {
+      const {data}= await fetchBlogs();
+
       const modifiedArray = data.map((item) => ({
         ...item,
       }));
@@ -37,7 +38,7 @@ const Homepage = () => {
   return (
     <div className="container">
       <div className="row">
-        {postData.slice(page * 4, (page + 1) * 4).map((data) => {
+        {blogs.slice(page * 4, (page + 1) * 4).map((data) => {
           <div className="col-3" key={data.id}>
             <div className="card">
               <div className="post">

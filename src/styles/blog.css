@@ -1,26 +1,53 @@
 .content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-            line-clamp: 5; 
-    -webkit-box-orient: vertical;
- }
- h2{
-    font-size:20px;
- }
- h3{
-    font-size:18px;
- }
- h4{
-    font-size:17px;
- }
- h5{
-    font-size:16px;
- }
- h6{
-    font-size:15px;
- } 
- .card {
-    min-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 17px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 15px;
+}
+.card {
+  min-height: 200px;
+}
+img.card-img-top {
+  object-fit: cover;
+}
+a{
+   text-decoration: none;
+}
+h2.card-title {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+}
+.content,.content p{
+   font-size:17px;
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+}
+a.more-link{
+   display: none;
+}
+.card{
+   margin-top:50px;
+}
+.container{
+   padding-bottom:12.5vh;
 }

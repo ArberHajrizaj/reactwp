@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { fetchSingleBlogPost } from "../api/blog";
+import { fetchSingleBlogPost, fetchMedia } from "../api/blog";
 
 import "../styles/single-post.css";
 
@@ -17,25 +17,38 @@ const SinglePost = () => {
     };
 
     fetchData();
-    
-  }, []);
+  }, [id]);
+
+  const [featuredMedia, setFeaturedMedia] = useState();
+
+  useEffect(() => {
+    const fetchMediaData = async () => {
+      if (blog) {
+        const { data } = await fetchMedia(blog.featured_media);
+        setFeaturedMedia(data);
+      }
+    };
+
+    fetchMediaData();
+  }, [blog]);
 
   return (
     <div className="single-post container">
-     
       {blog && (
         <div className="single-post container">
           <h1 className="post-title">{blog.title.rendered}</h1>
-          { <div className="single-image-section">
-            <img
-              className="comparingImages"
-              style={{
-                width: "100%",
-                objectFit: "cover",
-              }}
-              src={blog.better_featured_image.source_url}
-            />
-          </div> }
+          {featuredMedia && (
+            <div className="single-image-section">
+              <img
+                className="comparingImages"
+                style={{
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+                src={featuredMedia.source_url}
+              />
+            </div>
+          )}
           <div
             className="content"
             dangerouslySetInnerHTML={{

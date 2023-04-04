@@ -2,32 +2,28 @@ import React from "react";
 
 import "../styles/pagination.css";
 
-const Pagination = ({
-    totalPosts,
-    postsPerPage,
-    setCurrentPage,
-    currentPage,
-}) => {
-    let pages = [];
+const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
+  const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-        pages.push(i);
-    }
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
-    return (
-        <div className='pagination'>
-            {pages.map((page, index) => {
-                return (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentPage(page)}
-                        className={page === currentPage ? "active" : ""}>
-                        {page}
-                    </button>
-                );
-            })}
-        </div>
-    );
+  return (
+    <div className="pagination">
+      {pageNumbers.map((number) => (
+        <button
+          key={number}
+          className={`pagination-button ${
+            currentPage === number ? "active" : null
+          }`}
+          onClick={() => paginate(number)}
+        >
+          {number}
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default Pagination;

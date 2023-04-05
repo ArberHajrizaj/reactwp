@@ -125,4 +125,13 @@ a.postLink {
   display: flex;
 }
 
+input[type="text"] {
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.1);
+  outline: noe;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  padding:5px;
+  width:25%;
+}
 

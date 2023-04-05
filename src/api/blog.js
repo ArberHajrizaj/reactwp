@@ -24,3 +24,10 @@ export const fetchSingleBlogPost = async (id) => {
 export const fetchMedia = async (id) => {
   return await axios.get(`${process.env.REACT_APP_API_URL}/media/${id}`);
 };
+
+export const fetchComments = async (postId) => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_API_URL}/comments?post=${postId}`
+  );
+  return response.data;
+};

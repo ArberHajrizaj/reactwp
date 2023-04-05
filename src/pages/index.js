@@ -14,17 +14,7 @@ const Blog = () => {
   const [blogPost, setBlogPost] = useState(null);
   const [media, setMedia] = useState(null);
   const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     setLoading(true);
-  //     const res = await fetchBlogs();
-  //     setBlogs(res.data);
-  //     setLoading(false);
-  //   };
-
-  //   fetchPosts();
-  // }, []);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,40 +34,66 @@ const Blog = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
+  const filteredPosts = blogs.filter((post) =>
+    post.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="front-page-wrapper">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by title"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div>
       <div className="blog-page-wrapper">
-        {blogs
-          .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
-          .map((post) => (
-            <Link key={post.id} to={`${post.id}`} className="postLink">
-              <div className="blog-card">
-                <div className="blog-card-image">
-                  <img
-                    src={post._embedded["wp:featuredmedia"][0].source_url}
-                    alt={post.title.rendered}
-                    style={{ borderRadius: "15px 15px 0 0" }}
-                  />
-                </div>
-                <div className="blog-card-content">
-                  <h3 className="blog-card-title">{post.title.rendered}</h3>
-                  <p
-                    className="blog-card-excerpt"
-                    style={{ maxHeight: "3em", overflow: "hidden" }}
-                    dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                  />
-                </div>
-              </div>
-            </Link>
-          ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {currentPosts.length > 0 ? (
+              currentPosts.map((post) => (
+                <Link key={post.id} to={`${post.id}`} className="postLink">
+                  <div className="blog-card">
+                    <div className="blog-card-image">
+                      <img
+                        src={post._embedded["wp:featuredmedia"][0].source_url}
+                        alt={post.title.rendered}
+                        style={{ borderRadius: "15px 15px 0 0" }}
+                      />
+                    </div>
+                    <div className="blog-card-content">
+                      <h3 className="blog-card-title">{post.title.rendered}</h3>
+                      <p
+                        className="blog-card-excerpt"
+                        style={{ maxHeight: "3em", overflow: "hidden" }}
+                        dangerouslySetInnerHTML={{
+                          __html: post.excerpt.rendered,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div>No posts found.</div>
+            )}
+          </>
+        )}
       </div>
       <Pagination
         postsPerPage={postsPerPage}
-        totalPosts={blogs.length}
+        totalPosts={filteredPosts.length}
         paginate={paginate}
         currentPage={currentPage}
       />

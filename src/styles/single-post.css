@@ -101,7 +101,6 @@ body {
     font-weight: 800 !important;
   }
   .breadcrumb-item.active,li.breadcrumb-item {
-  
     line-height: 2em;
   }
   .breadcrumb-item.active{

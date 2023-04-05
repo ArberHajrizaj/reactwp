@@ -15,11 +15,35 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.pagination button:hover,.pagination button:active,.pagination button:focus {
+.pagination button:hover,.pagination button:active,.pagination button:focus,.active>.page-link{
   background-color: #e46c0a;
   color: #fff;
   cursor: pointer;
 }
 
+button.page-link:focus{
+  outline:none !important;
+}
+
+button.page-link:focus,button.page-link:active{
+  outline:none;
+  background-color: #e46c0a;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.active>.page-link, .page-link.active {
+  background-color: #e46c0a !important;
+  color: #fff;
+  border:none !important;
+  outline:none !important;
+  box-shadow: none;
+}
+.page-item:not(:first-child) .page-link{
+  border:none ;
+  outline:none;
+  box-shadow: none;
+}
 
 

@@ -59,16 +59,16 @@ const Pagination = ({
   );
 };
 
-Pagination.propTypes = {
-  postsPerPage: PropTypes.number.isRequired,
-  totalPosts: PropTypes.number.isRequired,
-  paginate: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  displayRange: PropTypes.number,
-};
+// Pagination.propTypes = {
+//   postsPerPage: PropTypes.number.isRequired,
+//   totalPosts: PropTypes.number.isRequired,
+//   paginate: PropTypes.func.isRequired,
+//   currentPage: PropTypes.number.isRequired,
+//   displayRange: PropTypes.number,
+// };
 
-Pagination.defaultProps = {
-  displayRange: 6,
-};
+// Pagination.defaultProps = {
+//   displayRange: 6,
+// };
 
 export default Pagination;

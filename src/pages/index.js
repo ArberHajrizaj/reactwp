@@ -10,27 +10,24 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(12);
-  const [blogPost, setBlogPost] = useState(null);
-  const [media, setMedia] = useState(null);
-  const [error, setError] = useState(null);
+  const [postsPerPage] = useState(12);
+  const [,setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const blogs = await fetchBlogs();
-        console.log("blogs:", blogs);
-        setBlogs(blogs);
+        const fetchedBlogs = await fetchBlogs();
+        setBlogs(fetchedBlogs);
         setLoading(false);
       } catch (error) {
-        console.log("error:", error);
         setError(true);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

@@ -6,7 +6,6 @@ import SinglePost from "../pages/single-post";
 
 const Router = () => (
 
- 
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<HomePage />} />

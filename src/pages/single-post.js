@@ -1,31 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { fetchSingleBlogPost, fetchMedia, fetchComments } from "../api/blog";
-
+import {fetchSingleBlogPost,fetchMedia,fetchComments,} from "../api/blog";
 import "../styles/single-post.css";
 
 const SinglePost = () => {
-  const [blog, setBlog] = useState();
-  const [featuredMedia, setFeaturedMedia] = useState();
+  const [blog, setBlog] = useState(null);
+  const [featuredMedia, setFeaturedMedia] = useState(null);
   const [comments, setComments] = useState([]);
-
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await fetchSingleBlogPost(id);
       setBlog(data);
-
       if (data && data.featured_media) {
         const mediaData = await fetchMedia(data.featured_media);
         setFeaturedMedia(mediaData.data);
       }
-
       const commentsData = await fetchComments(id);
       setComments(commentsData);
     };
-
     fetchData();
   }, [id]);
 
@@ -35,7 +29,10 @@ const SinglePost = () => {
         <div>
           {featuredMedia && (
             <div className="featured-image">
-              <img src={featuredMedia.source_url} alt={featuredMedia.alt_text} />
+              <img
+                src={featuredMedia.source_url}
+                alt={featuredMedia.alt_text}
+              />
             </div>
           )}
           <div className="content">
@@ -44,7 +41,6 @@ const SinglePost = () => {
           </div>
         </div>
       )}
-
       <div className="comments">
         <h2>Comments</h2>
         {comments.length === 0 ? (
@@ -53,7 +49,9 @@ const SinglePost = () => {
           comments.map((comment) => (
             <div key={comment.id} className="comment">
               <h3>{comment.author_name}</h3>
-              <div dangerouslySetInnerHTML={{ __html: comment.content.rendered }} />
+              <div
+                dangerouslySetInnerHTML={{ __html: comment.content.rendered }}
+              />
             </div>
           ))
         )}
